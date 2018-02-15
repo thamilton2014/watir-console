@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'pry'
+require "watir"
+require "optparse"
+
+#
+# Helper script for creating Pry session while inside a browser session.
+#
+
+require "pry"
+require "watir"
+require "optparse"
+
+options = {}
+
+OptionParser.new do |opts|
+    opts.banner = "Usage: watir [browser]"
+
+    opts.on("-d", "--debug", "Run verbosely") do |v|
+        options[:debug] = v
+    end
+
+    opts.on("-b", "--browser", "Create session for browser") do |v|
+        options[:browser] = v
+    end
+
+end.parse!
+
+Watir::Console.start(ARGV)
